@@ -1,0 +1,50 @@
+<form (ngSubmit)="enviar(updateForm)" #updateForm="ngForm" autocomplete="off">
+  <div class="row m-2">
+    <label class="col-3 form-label">Nombre: </label>
+    <div class="col-9">
+      <input type="text" [(ngModel)]="comprador.nombre" id="nombre" name="nombre" class="form-control" required>
+      <span style="color: red;" *ngIf="updateForm.submitted&&updateForm.controls['nombre'].errors">Este Campo es obligatorio (*)</span>
+    </div>
+  </div>
+  <div class="row m-2">
+    <label class="col-3 form-label">Tipo Documento: </label>
+    <div class="col-9">
+      <select type="text" [(ngModel)]="comprador.tipo_doc" name="tipo_doc" class="custom-select" required>
+        <option value="" selected>Elije un Documento</option>
+        <option value="01">DNI</option>
+        <option value="06">RUC</option>
+        <option value="04">CARNET DE EXTRANJERIA</option>
+      </select>
+      <span style="color: red;" *ngIf="updateForm.submitted&&updateForm.controls['tipo_doc'].errors">Este Campo es obligatorio (*)</span>
+    </div>
+  </div>
+  <div class="row m-2">
+    <label class="col-3 form-label">Numero Documento: </label>
+    <div class="col-9">
+      <input type="number" [(ngModel)]="comprador.num_doc" name="num_doc" class="form-control" required>
+      <span style="color: red;" *ngIf="updateForm.submitted&&updateForm.controls['num_doc'].errors">Este Campo es obligatorio (*)</span>
+    </div>
+  </div>
+  <div class="row m-2">
+    <label class="col-3 form-label">Telefono: </label>
+    <div class="col-9">
+      <input type="number" [(ngModel)]="comprador.telefono" name="telefono" class="form-control" required>
+      <span style="color: red;" *ngIf="updateForm.submitted&&updateForm.controls['telefono'].errors">Este Campo es obligatorio (*)</span>
+    </div>
+  </div>
+  <div class="row m-2">
+    <label class="col-3 form-label">Correo: </label>
+    <div class="col-9">
+      <input type="email" [(ngModel)]="comprador.correo" name="correo" class="form-control" required>
+      <span style="color: red;" *ngIf="updateForm.submitted&&updateForm.controls['correo'].errors">Este Campo es obligatorio (*)</span>
+    </div>
+  </div>
+  <div class="row m-2">
+    <label class="col-3 form-label">Documento: </label>
+    <div class="col-9">
+      <input type="text" [(ngModel)]="comprador.documento" name="documento" class="form-control" required>
+      <span style="color: red;" *ngIf="updateForm.submitted&&updateForm.controls['documento'].errors">Este Campo es obligatorio (*)</span>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary">Aceptar</button>
+</form>

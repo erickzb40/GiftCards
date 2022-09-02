@@ -1,0 +1,123 @@
+<div class="row m-0">
+  <div class="col-md-3 col-sm-3">
+    <!-- Widget: user widget style 2 -->
+    <div class="card card-widget widget-user-2">
+      <!-- Add the bg color to the header using any of the bg-* classes -->
+      <div class="widget-user-header bg-dark">
+        <div class="widget-user-image">
+          <img class="img-circle elevation-1" style="height: 60px;" src="../../../../../assets/dist/img/longhorn.png"
+            alt="User Avatar">
+        </div>
+        <!-- /.widget-user-image -->
+        <h4 class="widget-user-username" style="font-weight: bold;">Gift Card </h4>
+        <h5 class="widget-user-desc" style="color: red ;font: small-caps 100%/100% serif;font-size: 25px;">LongHorn</h5>
+
+      </div>
+      <div class="card-footer p-4">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              Codigo <span class="float-right badge bg-info">LH23@GH2022</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              Fecha vcto <span class="float-right">31/08/2022</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              Monto <span class="float-right" style="font-weight: bold;">S/.100.00</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <span class="badge bg-light">Calle Siempre viva 742 - Springfield</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- /.widget-user -->
+  </div>
+
+
+  <div class="col-md-3 col-sm-3" id="contenido" #contenido>
+    <!-- Widget: user widget style 2 -->
+    <div class="card card-widget widget-user-2">
+      <!-- Add the bg color to the header using any of the bg-* classes -->
+      <div class="widget-user-header bg-dark">
+        <div class="widget-user-image">
+          <img class="img-circle elevation-1" style="height: 60px;" src="../../../../../assets/dist/img/longhorn.png"
+            alt="User Avatar">
+        </div>
+        <!-- /.widget-user-image -->
+        <h5 class="widget-user-desc" style="color: red ;font: small-caps 100%/100% serif;font-size: 25px;">LongHorn</h5>
+        <h3><span class="float-right" style="font-weight: bold;">S/.100.00</span></h3>
+      </div>
+      <div class="card-footer p-4">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+           <h4 class="text-center">Gift Card</h4>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              Codigo <span class="float-right badge bg-info">LH23@GH2022</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              Fecha vcto <span class="float-right">31/08/2022</span>
+            </a>
+          </li>
+          <li class="nav-item text-center">
+            <a href="#" class="nav-link">
+              <!-- Facebook -->
+              <i class="fab fa-facebook-f"></i>
+
+              <!-- Instagram -->
+              <i class="fab fa-instagram"></i>
+
+              <!-- Linkedin -->
+              <i class="fab fa-linkedin-in"></i>
+              <!-- Whatsapp -->
+              <i class="fab fa-whatsapp"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- /.widget-user -->
+  </div>
+
+
+  <div class="card col-md-6 col-sm-12">
+    <div class="col">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">Admin</li>
+        <li class="breadcrumb-item active">GiftCards</li>
+      </ol>
+      <div class="card-body">
+        <h3>Crear Gift Cards</h3>
+        <p>Establece un importe</p>
+        <div class="row">
+          <button (click)="setMonto(200)" id="btn200" class="btn btn-light monto-color" style="width: 90px;">S/200.00</button>
+          <button (click)="setMonto(100)" id="btn100" #btn100 class="btn btn-light monto-color" style="width: 90px;">S/100.00</button>
+          <button (click)="setMonto(50)"  id="btn50" #btn50 class="btn btn-light monto-color" style="width: 90px;">S/50.00</button>
+          <button (click)="setMonto(20)"  id="btn20" #btn20 class="btn btn-light monto-color" style="width: 90px;">S/20.00</button>
+          <select name="cantidad" class="form-select form-select-sm" style="width: 54px;">
+            <option value="{{i}}" *ngFor="let i of numbers">{{i}}</option>
+          </select>
+        </div>
+        <div class="row">
+          <input type="text" style="width: 90px;" class="form-control">
+          <button class="btn btn-primary" style="width: 200px;" (click)="crearImagen()">crear imagen</button>
+
+        </div>
+        <p>Comprador</p>
+        <hr>
+        <app-comprador-form></app-comprador-form>
+      </div>
+    </div>
+
+  </div>
