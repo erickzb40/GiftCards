@@ -3,7 +3,8 @@
     <label class="col-3 form-label">Nombre: </label>
     <div class="col-9">
       <input type="text" [(ngModel)]="comprador.nombre" id="nombre" name="nombre" class="form-control" required>
-      <span style="color: red;" *ngIf="updateForm.submitted&&updateForm.controls['nombre'].errors">Este Campo es obligatorio (*)</span>
+      <span style="color: red;" *ngIf="updateForm.submitted&&updateForm.controls['nombre'].errors">Este Campo es
+        obligatorio (*)</span>
     </div>
   </div>
   <div class="row m-2">
@@ -15,36 +16,68 @@
         <option value="06">RUC</option>
         <option value="04">CARNET DE EXTRANJERIA</option>
       </select>
-      <span style="color: red;" *ngIf="updateForm.submitted&&updateForm.controls['tipo_doc'].errors">Este Campo es obligatorio (*)</span>
+      <span style="color: red;" *ngIf="updateForm.submitted&&updateForm.controls['tipo_doc'].errors">Este Campo es
+        obligatorio (*)</span>
     </div>
   </div>
   <div class="row m-2">
     <label class="col-3 form-label">Numero Documento: </label>
     <div class="col-9">
       <input type="number" [(ngModel)]="comprador.num_doc" name="num_doc" class="form-control" required>
-      <span style="color: red;" *ngIf="updateForm.submitted&&updateForm.controls['num_doc'].errors">Este Campo es obligatorio (*)</span>
+      <span style="color: red;" *ngIf="updateForm.submitted&&updateForm.controls['num_doc'].errors">Este Campo es
+        obligatorio (*)</span>
     </div>
   </div>
   <div class="row m-2">
     <label class="col-3 form-label">Telefono: </label>
     <div class="col-9">
       <input type="number" [(ngModel)]="comprador.telefono" name="telefono" class="form-control" required>
-      <span style="color: red;" *ngIf="updateForm.submitted&&updateForm.controls['telefono'].errors">Este Campo es obligatorio (*)</span>
+      <span style="color: red;" *ngIf="updateForm.submitted&&updateForm.controls['telefono'].errors">Este Campo es
+        obligatorio (*)</span>
     </div>
   </div>
   <div class="row m-2">
     <label class="col-3 form-label">Correo: </label>
     <div class="col-9">
       <input type="email" [(ngModel)]="comprador.correo" name="correo" class="form-control" required>
-      <span style="color: red;" *ngIf="updateForm.submitted&&updateForm.controls['correo'].errors">Este Campo es obligatorio (*)</span>
+      <span style="color: red;" *ngIf="updateForm.submitted&&updateForm.controls['correo'].errors">Este Campo es
+        obligatorio (*)</span>
     </div>
   </div>
   <div class="row m-2">
     <label class="col-3 form-label">Documento: </label>
     <div class="col-9">
       <input type="text" [(ngModel)]="comprador.documento" name="documento" class="form-control" required>
-      <span style="color: red;" *ngIf="updateForm.submitted&&updateForm.controls['documento'].errors">Este Campo es obligatorio (*)</span>
+      <span style="color: red;" *ngIf="updateForm.submitted&&updateForm.controls['documento'].errors">Este Campo es
+        obligatorio (*)</span>
     </div>
   </div>
-  <button type="submit" class="btn btn-primary">Aceptar</button>
+  <div class="row m-2">
+    <label class="col-3 form-label">Descripción: </label>
+    <div class="col-9">
+      <input type="text" [(ngModel)]="comprador.descripcion" name="descripcion" class="form-control" required>
+      <span style="color: red;" *ngIf="updateForm.submitted&&updateForm.controls['descripcion'].errors">Este Campo es
+        obligatorio (*)</span>
+    </div>
+  </div>
+  <div class="row m-2">
+    <label class="col-3 form-label">Mostrar: </label>
+    <div class="col-9">
+      <div class="row ml-4 mb-2">
+        <div class="col-4 custom-control custom-radio">
+          <input [(ngModel)]="comprador.montoTexto" class="custom-control-input custom-control-input-success" value="monto" type="radio" id="customRadio4"
+            name="montoTexto" checked>
+          <label for="customRadio4" class="custom-control-label">Monto</label>
+        </div>
+        <div class="col-8 custom-control custom-radio">
+          <input [(ngModel)]="comprador.montoTexto" class="custom-control-input custom-control-input-primary" value="producto" type="radio" id="customRadio2"
+            name="montoTexto">
+          <label for="customRadio2" class="custom-control-label">Producto</label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- radio -->
+
+  <div class="text-center"><button type="submit" class="btn btn-primary">Aceptar</button></div>
 </form>

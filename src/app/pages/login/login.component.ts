@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
         Swal.close();
         localStorage.setItem('token',this.usuario.usuario_nombre);
         localStorage.setItem('empresa',res[0].empresa);
-        this.router.navigateByUrl('admin');
+        this.router.navigateByUrl('cards');
       } else {
         Swal.fire({
           title: 'Mensaje',

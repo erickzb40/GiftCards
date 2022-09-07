@@ -1,0 +1,35 @@
+<table class="table table-sm">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Importe</th>
+      <th scope="col">Cantidad</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Tipo Documento</th>
+      <th scope="col">Numero Doc</th>
+      <th scope="col">Telefono</th>
+      <th scope="col">Correo</th>
+      <th scope="col">Documento de pago</th>
+      <th scope="col">Mostrar</th>
+      <th scope="col">Descripción</th>
+      <th scope="col">Btn</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of cliente | paginate: { itemsPerPage: 10, currentPage: p, id: 'first' }">
+      <th scope="row">{{item.id}}</th>
+      <td>{{item.importe}}</td>
+      <td>{{item.cantidad}}</td>
+      <td>{{item.nombre}}</td>
+      <td>{{item.tipo_doc}}</td>
+      <td>{{item.num_doc}}</td>
+      <td>{{item.telefono}}</td>
+      <td>{{item.correo}}</td>
+      <td>{{item.documento}}</td>
+      <td>{{item.montoTexto}}</td>
+      <td>{{item.descripcion}}</td>
+      <td><a style="cursor: pointer;"><i class="fa-solid fa-download"></i></a></td>
+    </tr>
+  </tbody>
+</table>
+<pagination-controls (pageChange)="p = $event" id="first"></pagination-controls>
