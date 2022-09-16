@@ -1,0 +1,11 @@
+<app-header></app-header>
+<div class="contenedor">
+ <div class="contenido">
+  <h3 for="input_code_giftcard"> Ingrese el codigo del GiftCard</h3><br>
+  <input [(ngModel)]="input" placeholder="Ingrese su codigo aqui" type="text">
+  <p>Ejemplo: LHABCJK</p>
+ <div class="contendor-boton">
+  <button (click)="buscarSerie()" class="btn btn-success m-2">Aceptar</button>
+ </div>
+ </div>
+</div>

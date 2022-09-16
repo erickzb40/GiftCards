@@ -1,14 +1,6 @@
-<nav class="navbar navbar-expand-lg bg-dark">
-  <a class="navbar-brand ml-2" href="/#/dashboard">DashBoard</a>
-  <a class="navbar-brand ml-2" href="/#/cards">Cards</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <!-- <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="/#/cards">Cards<span class="sr-only">(current)</span></a>
-      </li>
-    </ul>
-  </div> -->
+<nav class="navbarz">
+  <a  href="/#/dashboard">DashBoard</a>
+  <a  href="/#/cards">Cards</a>
+  <a  href="/#/canje">Canje</a>
+  <button *ngIf="token" (click)="salir()" class="btn btn-danger float-right mr-3">Salir</button>
 </nav>

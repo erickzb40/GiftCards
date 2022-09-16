@@ -15,7 +15,9 @@ import { CarouselComponent } from './pages/admin/card/carousel/carousel.componen
 import { TablaComponent } from './pages/admin/dashboard/tabla/tabla.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-
+import { CanjeComponent } from './pages/admin/canje/canje.component';
+import { PdfComponent } from './pages/admin/card/pdf/pdf.component';
+import { DatePipe } from '@angular/common';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +28,9 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     HeaderComponent,
     DashboardComponent,
     CarouselComponent,
-    TablaComponent
+    TablaComponent,
+    CanjeComponent,
+    PdfComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +41,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     NgxPaginationModule,
     FontAwesomeModule
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

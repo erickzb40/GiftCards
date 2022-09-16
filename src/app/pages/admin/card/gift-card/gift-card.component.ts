@@ -1,9 +1,10 @@
+import { Router } from '@angular/router';
+import { finalize } from 'rxjs';
 import { NgForm } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import * as $ from 'jquery';
 import html2canvas from 'html2canvas';
-import { CanvasRenderer } from 'html2canvas/dist/types/render/canvas/canvas-renderer';
-import {AuthLogin} from './../../../../../service/auth.service';
+import { CardService } from './../../../../../service/card.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -13,8 +14,8 @@ import Swal from 'sweetalert2';
 })
 export class GiftCardComponent implements OnInit {
   numbers: Array<any> = [];
-  importe:number=0;
-  cantidad:number=1;
+  importe: number = 0;
+  cantidad: number = 1;
   titulo = 'Como Convertir el contenido de un Div a Imagen en Angular 10';
   imgcreada = false;
   imagenCreada: any;
@@ -30,32 +31,36 @@ export class GiftCardComponent implements OnInit {
     this.imgcreada = true;
 
   }
-  constructor(public auth:AuthLogin) {
+  constructor(public auth: CardService, public router:Router) {
     this.numbers = Array.from({ length: 50 }, (v, k) => k + 1);
   }
   ngOnInit(): void {
   }
-  enviarForm($event:NgForm) {
-   if(!$event.invalid){
-    $event.value.importe=this.importe;
-    $event.value.cantidad=this.cantidad;
-    console.log($event.value);
-    this.auth.CrearGiftCard($event.value).subscribe((res:any)=>{
-    if(res.documento){
-      Swal.fire({icon:'success',text:'Se creo con exito'});
+  enviarForm($event: NgForm) {
+    if (!$event.invalid) {
+      $event.value.importe = this.importe;
+      $event.value.cantidad = this.cantidad;
+      this.auth.CrearGiftCard($event.value).subscribe((res: any) => {
+          Swal.fire({ icon: 'success', text: 'Se genero con exito, desea descargarlo como PDF?', confirmButtonText: 'Si', showDenyButton: true }).then((result) => {
+            /* Read more about isConfirmed, isDenied below */
+            if (result.isConfirmed) {
+              this.router.navigateByUrl('pdf/F01-23');
+            } else if (result.isDenied) {
+            }
+          });
+      }, (error:any) => {
+        Swal.fire({ icon: 'warning', text: error.error.detail?error.error.detail:'Hubo un error con la conexion'});
+      });
     }
-    },error=>{
-      Swal.fire({icon:'warning',text:'Hubo un error en la conexion'});
-    });
-   }}
+  }
   setMonto(monto: number) {
     $(".btn-success").each(function () {
       $(this).removeClass("btn-success").addClass("btn-light");
     });
     $("#btn" + monto).removeClass("btn-light").addClass("btn-success");
-    this.importe=monto;
+    this.importe = monto;
   }
-  inputClass(){
+  inputClass() {
     $(".btn-success").each(function () {
       $(this).removeClass("btn-success").addClass("btn-light");
     });

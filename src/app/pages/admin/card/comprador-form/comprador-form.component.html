@@ -37,6 +37,14 @@
     </div>
   </div>
   <div class="row m-2">
+    <label class="col-3 form-label">Fecha de vencimiento: </label>
+    <div class="col-9">
+      <input type="datetime-local" [(ngModel)]="comprador.fecha_vencimiento" name="fecha_vencimiento" class="form-control" required>
+      <span style="color: red;" *ngIf="updateForm.submitted&&updateForm.controls['fecha_vencimiento'].errors">Este Campo es
+        obligatorio (*)</span>
+    </div>
+  </div>
+  <div class="row m-2">
     <label class="col-3 form-label">Correo: </label>
     <div class="col-9">
       <input type="email" [(ngModel)]="comprador.correo" name="correo" class="form-control" required>
@@ -53,11 +61,20 @@
     </div>
   </div>
   <div class="row m-2">
+    <label class="col-3 form-label">Local: </label>
+    <div class="col-9">
+      <select type="text" [(ngModel)]="local" name="local" class="custom-select" required>
+        <option value="" >Elije un Local</option>
+        <option  [value]="item.id"  *ngFor="let item of locales">{{item.descripcion}}</option>
+      </select>
+      <span style="color: red;" *ngIf="updateForm.submitted&&updateForm.controls['local'].errors">Este Campo es
+        obligatorio (*)</span>
+    </div>
+  </div>
+  <div class="row m-2">
     <label class="col-3 form-label">Descripción: </label>
     <div class="col-9">
-      <input type="text" [(ngModel)]="comprador.descripcion" name="descripcion" class="form-control" required>
-      <span style="color: red;" *ngIf="updateForm.submitted&&updateForm.controls['descripcion'].errors">Este Campo es
-        obligatorio (*)</span>
+      <input type="text" [(ngModel)]="comprador.descripcion" name="descripcion" class="form-control">
     </div>
   </div>
   <div class="row m-2">
@@ -72,7 +89,7 @@
         <div class="col-8 custom-control custom-radio">
           <input [(ngModel)]="comprador.montoTexto" class="custom-control-input custom-control-input-primary" value="producto" type="radio" id="customRadio2"
             name="montoTexto">
-          <label for="customRadio2" class="custom-control-label">Producto</label>
+          <label for="customRadio2" class="custom-control-label">Descripción</label>
         </div>
       </div>
     </div>

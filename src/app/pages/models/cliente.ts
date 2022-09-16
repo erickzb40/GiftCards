@@ -9,5 +9,6 @@ export interface clienteModel{
    correo :  string,
    documento :  string,
    montoTexto : string,
-   descripcion :  string
+   descripcion :  string,
+   fecha_vencimiento:Date
 }

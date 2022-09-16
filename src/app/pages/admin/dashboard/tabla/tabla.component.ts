@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthLogin } from './../../../../../service/auth.service';
+import { CardService } from './../../../../../service/card.service';
 
 @Component({
   selector: 'app-tabla',
@@ -9,7 +9,7 @@ import { AuthLogin } from './../../../../../service/auth.service';
 export class TablaComponent implements OnInit {
   cliente: any = [];
   p: number = 1;
-  constructor(public auth: AuthLogin) {
+  constructor(public auth: CardService) {
     auth.ListarGiftCardCab().subscribe(res=>{
       this.cliente=res;
     });
