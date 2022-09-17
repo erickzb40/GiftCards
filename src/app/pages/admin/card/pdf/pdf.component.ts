@@ -22,7 +22,9 @@ export class PdfComponent implements OnInit {
   }
   ejecutarPdf(){
     this.prueba.forEach((element:any) => {
-      this.openPDF(Number(element.id));
+      if(element.estado==1){
+        this.openPDF(Number(element.id));
+      }
     });
   }
 

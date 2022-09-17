@@ -28,4 +28,7 @@ export class CardService {
   CanjearGiftCard(form:any){
     return this.http.put(this.localhost+'giftcarddets',form);
   }
+  ActivarGiftCard(form:any){
+    return this.http.put(this.localhost+'giftcardcabs',form);
+  }
 }

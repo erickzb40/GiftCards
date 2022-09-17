@@ -4,7 +4,7 @@
 </div>
 <div class="row">
   <div class="col-md-3 col-sm-3" id="HtmlData{{item.id}}" *ngFor="let item of prueba">
-    <div class="card card-widget widget-user-2">
+    <div class="card card-widget widget-user-2"  [ngClass]="{'filtro': item.estado != 1}">
       <div class="widget-user-header bg-dark">
         <div class="widget-user-image">
           <img class="img-circle elevation-1" style="height: 60px;" src="../../../../../assets/dist/img/longhorn.png"
