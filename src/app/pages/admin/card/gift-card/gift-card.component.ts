@@ -5,7 +5,6 @@ import * as $ from 'jquery';
 import html2canvas from 'html2canvas';
 import { CardService } from './../../../../../service/card.service';
 import Swal from 'sweetalert2';
-import { EmailService } from 'src/service/email.service';
 
 @Component({
   selector: 'app-gift-card',
@@ -31,7 +30,7 @@ export class GiftCardComponent implements OnInit {
     this.imgcreada = true;
 
   }
-  constructor(public auth: CardService, public router:Router,public email:EmailService) {
+  constructor(public auth: CardService, public router:Router) {
     this.numbers = Array.from({ length: 50 }, (v, k) => k + 1);
   }
   ngOnInit(): void {

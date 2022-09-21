@@ -3,7 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import jsPDF from 'jspdf';
 import { ActivatedRoute } from '@angular/router';
 import html2canvas from 'html2canvas';
-import { EmailService } from 'src/service/email.service';
 @Component({
   selector: 'app-pdf',
   templateUrl: './pdf.component.html',
@@ -11,7 +10,7 @@ import { EmailService } from 'src/service/email.service';
 })
 export class PdfComponent implements OnInit {
   prueba: any = [];
-  constructor(public _route: ActivatedRoute, public auth: CardService, public email: EmailService) {
+  constructor(public _route: ActivatedRoute, public auth: CardService) {
     auth.buscarDocumento(this._route.snapshot.paramMap.get('documento')!).subscribe((res: any) => {
       this.prueba = res;
     })
@@ -38,8 +37,5 @@ export class PdfComponent implements OnInit {
       PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight);
       PDF.save('giftcard' + id + '.pdf');
     });
-  }
-  enviarCorreo() {
-    this.email.enviarEmail();
   }
 }
