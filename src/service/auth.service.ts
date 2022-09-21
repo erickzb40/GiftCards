@@ -15,8 +15,8 @@ export class AuthLogin {
   }
    validarLogin() {
     var v=false;
-    var usuario = localStorage.getItem('usuario_nombre');
-    var pass = localStorage.getItem('pass');
+    var usuario = localStorage.getItem('pref');
+    var pass = localStorage.getItem('p');
     this.login({ usuario_nombre: usuario, contrasena: pass }).subscribe((res: any) => {
       if (Object.entries(res).length > 0) {
         v=true;

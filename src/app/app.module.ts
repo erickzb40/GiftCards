@@ -18,6 +18,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CanjeComponent } from './pages/admin/canje/canje.component';
 import { PdfComponent } from './pages/admin/card/pdf/pdf.component';
 import { DatePipe } from '@angular/common';
+import { QRCodeModule } from 'angularx-qrcode';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,6 +36,7 @@ import { DatePipe } from '@angular/common';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    QRCodeModule,
     HttpClientModule,
     FormsModule,
     RouterModule,

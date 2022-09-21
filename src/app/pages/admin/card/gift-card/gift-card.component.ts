@@ -1,11 +1,11 @@
 import { Router } from '@angular/router';
-import { finalize } from 'rxjs';
 import { NgForm } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import * as $ from 'jquery';
 import html2canvas from 'html2canvas';
 import { CardService } from './../../../../../service/card.service';
 import Swal from 'sweetalert2';
+import { EmailService } from 'src/service/email.service';
 
 @Component({
   selector: 'app-gift-card',
@@ -31,7 +31,7 @@ export class GiftCardComponent implements OnInit {
     this.imgcreada = true;
 
   }
-  constructor(public auth: CardService, public router:Router) {
+  constructor(public auth: CardService, public router:Router,public email:EmailService) {
     this.numbers = Array.from({ length: 50 }, (v, k) => k + 1);
   }
   ngOnInit(): void {
@@ -44,7 +44,7 @@ export class GiftCardComponent implements OnInit {
           Swal.fire({ icon: 'success', text: 'Se genero con exito, desea descargarlo como PDF?', confirmButtonText: 'Si', showDenyButton: true }).then((result) => {
             /* Read more about isConfirmed, isDenied below */
             if (result.isConfirmed) {
-              this.router.navigateByUrl('pdf/F01-23');
+              this.router.navigateByUrl('pdf/'+$event.value.documento);
             } else if (result.isDenied) {
             }
           });

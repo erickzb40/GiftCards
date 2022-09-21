@@ -61,17 +61,6 @@
     </div>
   </div>
   <div class="row m-2">
-    <label class="col-3 form-label">Local: </label>
-    <div class="col-9">
-      <select type="text" [(ngModel)]="local" name="local" class="custom-select" required>
-        <option value="" >Elije un Local</option>
-        <option  [value]="item.id"  *ngFor="let item of locales">{{item.descripcion}}</option>
-      </select>
-      <span style="color: red;" *ngIf="updateForm.submitted&&updateForm.controls['local'].errors">Este Campo es
-        obligatorio (*)</span>
-    </div>
-  </div>
-  <div class="row m-2">
     <label class="col-3 form-label">Descripción: </label>
     <div class="col-9">
       <input type="text" [(ngModel)]="comprador.descripcion" name="descripcion" class="form-control">

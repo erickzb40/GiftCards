@@ -1,8 +1,9 @@
 import { CardService } from 'src/service/card.service';
 import { Component, OnInit } from '@angular/core';
 import jsPDF from 'jspdf';
-import {ActivatedRoute} from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import html2canvas from 'html2canvas';
+import { EmailService } from 'src/service/email.service';
 @Component({
   selector: 'app-pdf',
   templateUrl: './pdf.component.html',
@@ -10,24 +11,22 @@ import html2canvas from 'html2canvas';
 })
 export class PdfComponent implements OnInit {
   prueba: any = [];
-  constructor(public _route:ActivatedRoute,public auth:CardService) {
-    auth.buscarDocumento(this._route.snapshot.paramMap.get('documento')!).subscribe((res:any)=>{
-    this.prueba=res;
+  constructor(public _route: ActivatedRoute, public auth: CardService, public email: EmailService) {
+    auth.buscarDocumento(this._route.snapshot.paramMap.get('documento')!).subscribe((res: any) => {
+      this.prueba = res;
     })
-    console.log();
   }
 
   ngOnInit(): void {
 
   }
-  ejecutarPdf(){
-    this.prueba.forEach((element:any) => {
-      if(element.estado==1){
+  ejecutarPdf() {
+    this.prueba.forEach((element: any) => {
+      if (element.estado == 1) {
         this.openPDF(Number(element.id));
       }
     });
   }
-
   public openPDF(id: number): void {
     let DATA: any = document.getElementById('HtmlData' + id);
     html2canvas(DATA, { scale: 3 }).then((canvas) => {
@@ -39,6 +38,8 @@ export class PdfComponent implements OnInit {
       PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight);
       PDF.save('giftcard' + id + '.pdf');
     });
-
+  }
+  enviarCorreo() {
+    this.email.enviarEmail();
   }
 }

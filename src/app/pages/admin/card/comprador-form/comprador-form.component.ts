@@ -9,26 +9,10 @@ import { CardService } from 'src/service/card.service';
 })
 export class CompradorFormComponent implements OnInit {
 
-  comprador = {
-    tipo_doc:'',
-    cantidad:2,
-    correo:'asd',
-    descripcion:'',
-    documento:'F01-23',
-    importe:20,
-    montoTexto:'monto',
-    telefono:123,
-    num_doc:123,
-    nombre:'erick',
-  } as clienteModel;
+  comprador = {tipo_doc:''} as clienteModel;
   locales:any=[];
-  local="";
 
-  constructor(public service:CardService) {
-    service.getLocal().subscribe(res=>{
-      this.locales=res;
-    });
-   }
+  constructor(public service:CardService) {}
   @Output() form: EventEmitter<any> = new EventEmitter();
   ngOnInit(): void {
     // this.service.getLocal(this.gc.empresa);

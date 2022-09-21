@@ -5,7 +5,7 @@ import { AuthLogin } from 'src/service/auth.service';
 import Swal from'sweetalert2';
 import { Router } from '@angular/router';
 import { finalize } from 'rxjs';
-
+import {Md5} from "md5-typescript";
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -19,14 +19,11 @@ export class LoginComponent implements OnInit {
     usuario_nombre:'',
     contrasena:''
   } as usuario;
-  localStoreProyect={
-    token:'',
-    empresa:0,
-  }
+
   recordarme:boolean=false;
   cargando: boolean = false;
   ngOnInit(): void {
-    if (localStorage.getItem('usuario_nombre')||localStorage.getItem('pass')) {
+    if (localStorage.getItem('user')||localStorage.getItem('pass')) {
       this.usuario.usuario_nombre = localStorage.getItem('user')!;
       this.recordarme=true;
     }
@@ -43,9 +40,7 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('recordarme','true');
         }
         Swal.close();
-        localStorage.setItem('usuario_nombre',this.usuario.usuario_nombre!);
-        localStorage.setItem('pass',this.usuario.contrasena!);
-        localStorage.setItem('usuario_id',res[0].usuario_id);
+        localStorage.setItem('pref', this.usuario.usuario_nombre);
         this.router.navigateByUrl('cards');
       } else {Swal.fire({title: 'Mensaje',icon: 'warning',text: 'No se encontro ningun usuario'})}
     }, err => {Swal.fire({ icon: 'warning', text: 'hubo un error en la conexion al servidor' });});

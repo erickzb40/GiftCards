@@ -1,6 +1,7 @@
 <app-header></app-header>
-<div class="col-12 text-center mt-3 mb-2">
-  <button class="btn btn-success btn-block" style="max-width: 1500px;" (click)="ejecutarPdf()">Download PDF</button>
+<div class="col text-center mt-3 mb-2">
+  <button class="btn btn-success" (click)="ejecutarPdf()">Download PDF</button>
+  <button class="btn btn-success" (click)="enviarCorreo()">Enviar Por correo</button>
 </div>
 <div class="row">
   <div class="col-md-3 col-sm-3" id="HtmlData{{item.id}}" *ngFor="let item of prueba">
@@ -35,6 +36,9 @@
               <span class="badge bg-light">{{item.descripcion|uppercase}}</span>
             </a>
           </li>
+          <div class="text-center">
+            <qrcode [qrdata]="item.serie" [width]="180" [errorCorrectionLevel]="'M'"></qrcode>
+          </div>
         </ul>
       </div>
     </div>
