@@ -45,6 +45,7 @@ export class GiftCardComponent implements OnInit {
             if (result.isConfirmed) {
               this.router.navigateByUrl('pdf/'+$event.value.documento);
             } else if (result.isDenied) {
+              
             }
           });
       }, (error:any) => {

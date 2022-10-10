@@ -39,7 +39,7 @@
   <div class="row m-2">
     <label class="col-3 form-label">Fecha de vencimiento: </label>
     <div class="col-9">
-      <input type="datetime-local" [(ngModel)]="comprador.fecha_vencimiento" name="fecha_vencimiento" class="form-control" required>
+      <input type="date" [(ngModel)]="comprador.fecha_vencimiento" name="fecha_vencimiento" class="form-control" required>
       <span style="color: red;" *ngIf="updateForm.submitted&&updateForm.controls['fecha_vencimiento'].errors">Este Campo es
         obligatorio (*)</span>
     </div>
@@ -72,11 +72,11 @@
       <div class="row ml-4 mb-2">
         <div class="col-4 custom-control custom-radio">
           <input [(ngModel)]="comprador.montoTexto" class="custom-control-input custom-control-input-success" value="monto" type="radio" id="customRadio4"
-            name="montoTexto" checked>
+            name="montoTexto">
           <label for="customRadio4" class="custom-control-label">Monto</label>
         </div>
         <div class="col-8 custom-control custom-radio">
-          <input [(ngModel)]="comprador.montoTexto" class="custom-control-input custom-control-input-primary" value="producto" type="radio" id="customRadio2"
+          <input [(ngModel)]="comprador.montoTexto" class="custom-control-input custom-control-input-primary" value="descripcion" type="radio" id="customRadio2"
             name="montoTexto">
           <label for="customRadio2" class="custom-control-label">Descripción</label>
         </div>

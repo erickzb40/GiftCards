@@ -3,8 +3,9 @@
   <button class="btn btn-success" (click)="ejecutarPdf()">Download PDF</button>
 </div>
 <div class="row">
-  <div class="col-md-3 col-sm-3" id="HtmlData{{item.id}}" *ngFor="let item of prueba">
-    <div class="card card-widget widget-user-2"  [ngClass]="{'filtro': item.estado != 1}">
+  <div class="col-sm-12	col-md-6	col-lg-3	col-xl-3" id="HtmlData{{item.id}}" *ngFor="let item of prueba">
+    <div *ngIf="item.mostrar=='descripcion'" class="card card-widget widget-user-2"
+    [ngClass]="{'filtro': item.estado == 5}">
       <div class="widget-user-header bg-dark">
         <div class="widget-user-image">
           <img class="img-circle elevation-1" style="height: 60px;" src="../../../../../assets/dist/img/longhorn.png"
@@ -13,7 +14,7 @@
         <h4 class="widget-user-username" style="font-weight: bold;">Gift Card </h4>
         <h5 class="widget-user-desc" style="color: red ;font: small-caps 100%/100% serif;font-size: 25px;">LongHorn</h5>
       </div>
-      <div class="card-footer p-4">
+      <div class="card-footer p-4" [ngClass]="{'vendido': item.estado == 2}">
         <ul class="nav flex-column">
           <li class="nav-item">
             <a class="nav-link">
@@ -22,17 +23,43 @@
           </li>
           <li class="nav-item">
             <a class="nav-link">
-              Fecha vcto <span class="float-right">31/08/2022</span>
+              Fecha vcto <span class="float-right">{{item.fecha_vencimiento|date:'shortDate'}}</span>
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link">
-              Monto <span class="float-right" style="font-weight: bold;">S/{{item.monto|number:'1.2'}}</span>
+              Descripción <span class="float-right">{{item.descripcion|uppercase}}</span>
             </a>
           </li>
-          <li class="nav-item" *ngIf="item.descripcion">
-            <a class="nav-link  text-center">
-              <span class="badge bg-light">{{item.descripcion|uppercase}}</span>
+          <div class="text-center">
+            <qrcode [qrdata]="item.serie" [width]="180" [errorCorrectionLevel]="'M'"></qrcode>
+          </div>
+        </ul>
+      </div>
+    </div>
+    <div *ngIf="item.mostrar=='monto'" class="card card-widget widget-user-2"
+      [ngClass]="{'filtro': item.estado == 5}">
+      <div class="widget-user-header bg-dark">
+        <div class="widget-user-image">
+          <img class="img-circle elevation-1" style="height: 60px;" src="../../../../../assets/dist/img/longhorn.png"
+            alt="User Avatar">
+        </div>
+        <h5 class="widget-user-desc" style="color: red ;font: small-caps 100%/100% serif;font-size: 25px;">LongHorn</h5>
+        <h3><span class="float-right" style="font-weight: bold;">S/{{item.monto|number:'1.2'}}</span></h3>
+      </div>
+      <div class="card-footer p-4"  [ngClass]="{'vendido': item.estado == 2}">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <h4 class="text-center">Gift Card</h4>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link">
+              Codigo <span class="float-right badge bg-info">{{item.serie}}</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link">
+              Fecha vcto <span class="float-right">{{item.fecha_vencimiento|date:'shortDate'}}</span>
             </a>
           </li>
           <div class="text-center">

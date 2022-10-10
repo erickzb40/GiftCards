@@ -9,7 +9,7 @@ import { CardService } from 'src/service/card.service';
 })
 export class CompradorFormComponent implements OnInit {
 
-  comprador = {tipo_doc:''} as clienteModel;
+  comprador = {tipo_doc:'',montoTexto:'monto'} as clienteModel;
   locales:any=[];
 
   constructor(public service:CardService) {}

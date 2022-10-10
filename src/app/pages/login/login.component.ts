@@ -15,16 +15,13 @@ export class LoginComponent implements OnInit {
 
   constructor(public auth:AuthLogin,public router:Router) {
    }
-  usuario={
-    usuario_nombre:'',
-    contrasena:''
-  } as usuario;
+  usuario={} as usuario;
 
   recordarme:boolean=false;
   cargando: boolean = false;
   ngOnInit(): void {
-    if (localStorage.getItem('user')||localStorage.getItem('pass')) {
-      this.usuario.usuario_nombre = localStorage.getItem('user')!;
+    if (localStorage.getItem('pref')) {
+      this.usuario.usuario_nombre = localStorage.getItem('pref')!;
       this.recordarme=true;
     }
   }

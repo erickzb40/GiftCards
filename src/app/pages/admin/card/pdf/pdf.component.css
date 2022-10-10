@@ -1,3 +1,8 @@
 .filtro{
   filter: grayscale(100%);
 }
+.vendido{
+background-image: url('../../../../../assets/dist/img/vendido.png');
+background-size: 350px 180px;
+background-repeat: no-repeat;
+}
