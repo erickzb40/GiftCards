@@ -1,6 +1,6 @@
+import { AuthGuard } from './pages/guard/auth.guard';
 import { PdfComponent } from './pages/admin/card/pdf/pdf.component';
 import { CanjeComponent } from './pages/admin/canje/canje.component';
-import { AuthGuard } from './guard-admin.guard';
 import { DashboardComponent } from './pages/admin/dashboard/dashboard/dashboard.component';
 import { LoginComponent } from './pages/login/login.component';
 import { NgModule } from '@angular/core';
