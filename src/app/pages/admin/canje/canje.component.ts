@@ -19,7 +19,7 @@ export class CanjeComponent implements OnInit {
   ngOnInit(): void {}
   buscarSerie() {
     Swal.showLoading();
-    if(localStorage.getItem('pref')==null)
+    if(localStorage.getItem('token')==null)
     {return Swal.fire({icon:'warning',text:'No tiene los permisos configurados vuelva a logearse!'})}
     var serie = this.input.trim();
     if (serie.length < 1) {
@@ -32,7 +32,7 @@ export class CanjeComponent implements OnInit {
           if(res[0].estado!=1){
             throw Swal.fire({icon:'warning',title:'GiftCard',text:'Estado:'+res[0].estado_descripcion});
           }else{
-          res[0].nombre_usuario=localStorage.getItem('pref');
+          res[0].nombre_usuario=localStorage.getItem('token');
           this.giftcard=res;
           this.giftcard[0].estado=2;
           var fecha = this.pipeDate.transform(res[0].fecha_vencimiento, 'short');

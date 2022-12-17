@@ -8,14 +8,14 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
-user=localStorage.getItem('pref');
+token=localStorage.getItem('token');
 
   constructor(public rout:Router) { }
   ngOnInit(): void {
   }
 
   salir(){
-    localStorage.removeItem('pref');
+    localStorage.removeItem('token');
     this.rout.navigateByUrl('login');
   }
 }

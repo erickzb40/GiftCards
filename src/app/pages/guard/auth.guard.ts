@@ -11,7 +11,7 @@ export class AuthGuard implements CanActivate {
 constructor(private ruta :Router){
 }
   canActivate() {
-    if(localStorage.getItem('pref')){
+    if(localStorage.getItem('token')){
      return true;
     }else{
     return this.ruta.navigateByUrl('login');

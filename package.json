@@ -53,6 +53,7 @@
     "@types/crypto-js": "^4.1.1",
     "@types/jasmine": "~4.0.0",
     "@types/jquery": "^3.5.14",
+    "@types/lodash": "^4.14.186",
     "@types/node": "^18.7.18",
     "jasmine-core": "~4.2.0",
     "karma": "~6.4.0",

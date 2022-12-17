@@ -1,5 +1,3 @@
-import { clienteModel } from 'src/app/pages/models/cliente';
-import { NgForm } from '@angular/forms';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
@@ -7,23 +5,24 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class AuthLogin {
-  localhost = "https://localhost:7292/api/giftcardcabs";
+  link = "https://localhost:7272/api/giftcards";
   constructor(public http: HttpClient) { }
 
-  login(usuario: any) {
-    return this.http.get("https://localhost:7292/api/giftcards/Usuario/usuario?usuario=" + usuario.usuario_nombre + "&contrasena=" + usuario.contrasena);
+  login(form: object) {
+    return this.http.post(this.link + "/Usuario/usuario", form);
   }
-   validarLogin() {
-    var v=false;
-    var usuario = localStorage.getItem('pref');
-    var pass = localStorage.getItem('p');
-    this.login({ usuario_nombre: usuario, contrasena: pass }).subscribe((res: any) => {
+  validarLogin() {
+    var token = localStorage.getItem('token');
+    if(token!=null||token!=""){
+      return false;
+    }
+    return true;
+/*     this.login({ token: token }).subscribe((res: any) => {
       if (Object.entries(res).length > 0) {
-        v=true;
+        return true;
       } else {
-        v=false;
+        return false;
       }
-    })
-    return v;
+    }) */
   }
 }
