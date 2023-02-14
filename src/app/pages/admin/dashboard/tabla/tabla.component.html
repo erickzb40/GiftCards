@@ -1,45 +1,112 @@
+<div class="wrapper">
+  <div class="card m-2">
+    <div class="card-header">
+      <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button"
+            role="tab" aria-controls="home" aria-selected="true">Cabecera</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button"
+            role="tab" aria-controls="profile" aria-selected="false">Detalles</button>
+        </li>
+      </ul>
+    </div>
+    <div class="card-body">
+      <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+          <div class="row">
+            <div class="col-2">
+              <label>Desde:</label>
+              <input type="date" [(ngModel)]="desde" class="form-control">
+            </div>
+            <div class="col-2">
+              <label>Hasta:</label>
+              <input type="date" [(ngModel)]="hasta" class="form-control">
+            </div>
+            <div class="col-1">
+              <label for="">&nbsp;&nbsp;</label><br>
+              <button class="btn btn-success mb-2">Exportar <i class="fa fa-file-excel"></i></button>
+            </div>
+          </div>
+          <table class="table table-sm text-center">
+            <thead>
+              <tr>
+                <!-- <th scope="col">ID</th> -->
+                <th scope="col">Documento de pago</th>
+                <th scope="col">Importe</th>
+                <th scope="col">Cantidad</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Tipo Documento</th>
+                <th scope="col">Numero Doc</th>
+                <th scope="col">Telefono</th>
+                <th scope="col">Correo</th>
+                <!-- <th scope="col">Mostrar</th> -->
+                <th scope="col">Descripción</th>
+                <th scope="col">Activo</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of cabecera | paginate: { itemsPerPage: 10, currentPage: p, id: 'first' }">
+                <!-- <th scope="row">{{item.id}}</th> -->
+                <td>{{item.documento}}</td>
+                <td>{{item.importe}}</td>
+                <td>{{item.cantidad}}</td>
+                <td>{{item.nombre}}</td>
+                <td>{{item.tipo_doc}}</td>
+                <td>{{item.num_doc}}</td>
+                <td>{{item.telefono}}</td>
+                <td>{{item.correo}}</td>
+                <!-- <td>{{item.montoTexto}}</td> -->
+                <td>{{item.descripcion}}</td>
+                <td>
+                  <span [ngSwitch]="item.estado==1">
+                    <a style="cursor: no-drop;font-size: 25px;color: green;" *ngSwitchCase="true"><i
+                        class="fas fa-toggle-on"></i></a>
+                    <a style="cursor: pointer;font-size: 25px;color: red" *ngSwitchCase="false" (click)="asignarDocumento(item.id,1,reporte)"><i
+                        class="fas fa-toggle-off" ></i></a>
+                  </span>&nbsp; &nbsp;
+                </td>
+                <td>
+                  <a *ngIf="item.estado==1" style="cursor: pointer; font-size: 23px;"  tabindex="0" data-bs-toggle="tooltip" title="Descargar los giftcards" (click)="abrirGiftCard(item.documento)" ><i class="fa-solid fa-download"></i></a>
+                </td>
+                <td>
+                  <a *ngIf="item.estado==1"style="cursor: pointer;  font-size: 23px;"  tabindex="0" data-bs-toggle="tooltip" title="Enviar los giftcards por correo" (click)="enviarCorreo(item.id)"><i class="fa-solid fa-square-envelope"></i></a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <pagination-controls (pageChange)="p = $event" id="first"></pagination-controls>
+        </div>
+        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+          <app-tabla-detalles ></app-tabla-detalles>
+        </div>
+      </div>
 
-<button class="btn btn-success mb-2">Exportar Excel</button>
-<table class="table table-sm text-center">
-  <thead>
-    <tr>
-      <!-- <th scope="col">ID</th> -->
-      <th scope="col">Documento de pago</th>
-      <th scope="col">Importe</th>
-      <th scope="col">Cantidad</th>
-      <th scope="col">Nombre</th>
-      <th scope="col">Tipo Documento</th>
-      <th scope="col">Numero Doc</th>
-      <th scope="col">Telefono</th>
-      <th scope="col">Correo</th>
-      <!-- <th scope="col">Mostrar</th> -->
-      <th scope="col">Descripción</th>
-      <th scope="col">Activo</th>
-      <th scope="col"><i class="fas fa-bars"></i></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let item of cliente | paginate: { itemsPerPage: 10, currentPage: p, id: 'first' }">
-      <!-- <th scope="row">{{item.id}}</th> -->
-      <td>{{item.documento}}</td>
-      <td>{{item.importe}}</td>
-      <td>{{item.cantidad}}</td>
-      <td>{{item.nombre}}</td>
-      <td>{{item.tipo_doc}}</td>
-      <td>{{item.num_doc}}</td>
-      <td>{{item.telefono}}</td>
-      <td>{{item.correo}}</td>
-      <!-- <td>{{item.montoTexto}}</td> -->
-      <td>{{item.descripcion}}</td>
-      <td>
-       <span [ngSwitch]="item.estado==1">
-        <a style="cursor: pointer;"*ngSwitchCase="true" (click)="activarGiftCard(item.id,5)"><i class="fas fa-toggle-on" style="color: green;height: 20px;"></i></a>
-        <a style="cursor: pointer;"*ngSwitchCase="false" (click)="activarGiftCard(item.id,1)"><i class="fas fa-toggle-off" style="color: red;height: 20px;"></i></a>
-      </span>&nbsp; &nbsp;
-     </td>
-     <td><a style="cursor: pointer;" (click)="abrirGiftCard(item.documento)"><i class="fa-solid fa-download"></i></a>
-    </td>
-    </tr>
-  </tbody>
-</table>
-<pagination-controls (pageChange)="p = $event" id="first"></pagination-controls>
+    </div>
+  </div>
+</div>
+<ng-template #reporte let-modal style="width: 1000px;">
+  <div class="modal-header" style="height: 55px;">
+    <h3 class="modal-title"><b>Ingrese la factura del cliente</b></h3>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <form (ngSubmit)="activarGiftcard(formDoc)" id="formDoc" #formDoc="ngForm" autocomplete="off">
+    <div class="row m-2">
+      <label class="col-3 form-label">Documento: </label>
+      <div class="col-9">
+        <input type="text" [(ngModel)]="documento" id="documento" name="documento" class="form-control" autocomplete="off" required>
+        <span style="color: red;" *ngIf="formDoc.submitted&&formDoc.controls['documento'].errors">Este Campo es obligatorio (*)</span>
+      </div>
+    </div>
+  </form>
+  </div>
+  <div class="modal-footer">
+    <button (click)="modal.dismiss('Cross click')" class="btn btn-danger" >Salir</button>
+    <button  type="submit" class="btn btn-success" form="formDoc">Aceptar</button>
+  </div>
+</ng-template>
+

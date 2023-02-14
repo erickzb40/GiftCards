@@ -9,7 +9,7 @@ import { AdminComponent } from './pages/admin/admin.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
-  {path: 'cards', component: AdminComponent,canActivate:[AuthGuard]},
+  {path: 'registros', component: AdminComponent,canActivate:[AuthGuard]},
   {path: 'dashboard', component: DashboardComponent,canActivate:[AuthGuard]},
   {path: 'canje', component: CanjeComponent,canActivate:[AuthGuard]},
   {path: 'pdf/:documento', component: PdfComponent,canActivate:[AuthGuard]},

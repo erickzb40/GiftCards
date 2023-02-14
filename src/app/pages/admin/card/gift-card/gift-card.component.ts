@@ -36,17 +36,16 @@ export class GiftCardComponent implements OnInit {
   ngOnInit(): void {
   }
   enviarForm($event: NgForm) {
+    Swal.showLoading();
+    if(this.importe<=1){
+      return Swal.fire({icon:'warning',title:'El importe debe ser mayor a 0'})
+    }
     if (!$event.invalid) {
       $event.value.importe = this.importe;
       $event.value.cantidad = this.cantidad;
       this.auth.CrearGiftCard($event.value).subscribe((res: any) => {
-          Swal.fire({ icon: 'success', text: 'Se genero con exito, desea descargarlo como PDF?', confirmButtonText: 'Si', showDenyButton: true }).then((result) => {
-            /* Read more about isConfirmed, isDenied below */
-            if (result.isConfirmed) {
-              this.router.navigateByUrl('pdf/'+$event.value.documento);
-            } else if (result.isDenied) {
-              
-            }
+          Swal.fire({ icon: 'success', text: 'Se genero con exito!',showConfirmButton:true}).then((result) => {
+            window.location.reload();
           });
       }, (error:any) => {
         Swal.fire({ icon: 'warning', text: error.error.detail?error.error.detail:'Hubo un error con la conexion'});

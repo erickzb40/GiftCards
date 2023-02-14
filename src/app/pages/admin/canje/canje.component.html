@@ -5,7 +5,49 @@
   <input [(ngModel)]="input" placeholder="Ingrese su codigo aqui" type="text">
   <p>Ejemplo: LHABCJK</p>
  <div class="contendor-boton">
-  <button (click)="buscarSerie()" class="btn btn-success m-2">Aceptar</button>
+  <button (click)="buscarSerie(reporte)" class="btn btn-success m-2">Aceptar</button>
  </div>
  </div>
 </div>
+
+<ng-template #reporte let-modal style="width: 1000px;">
+  <div class="modal-header" style="height: 55px;">
+    <h3 class="modal-title"><b>Ingrese el Dni del cliente</b></h3>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <form (ngSubmit)="enviar(formDoc)" id="formDoc" #formDoc="ngForm" autocomplete="off">
+      <div class="row m-2">
+        <label class="col-3 form-label">Documento: </label>
+        <div class="col-9">{{documento_ref}}</div>
+      </div>
+      <div class="row m-2">
+        <div class="col-3"><b>Expira: </b></div>
+        <div class="col-9">{{fecha}}</div>
+      </div>
+      <div class="row m-2">
+        <div class="col-3"><b>Local: </b></div>
+        <div class="col-9">{{local_descripcion}}</div>
+      </div>
+      <div class="row m-2">
+        <div class="col-3"><b>Importe: </b></div>
+        <div class="col-9">S/ {{monto}}</div>
+      </div>
+      <div class="row m-2">
+        <div class="col-3"><b>Serie: </b></div>
+        <div class="col-9">{{serie}}</div>
+      </div>
+    <div class="row m-2">
+      <label class="col-3 form-label">Documento: </label>
+      <div class="col-9">
+        <input type="text" [(ngModel)]="documento" id="documento" name="documento" placeholder="Ingrese el dni" class="form-control" autocomplete="off" required>
+        <span style="color: red;" *ngIf="formDoc.submitted&&formDoc.controls['documento'].errors">Este Campo es obligatorio (*)</span>
+      </div>
+    </div>
+  </form>
+  </div>
+  <div class="modal-footer">
+    <button (click)="modal.dismiss('Cross click')" class="btn btn-danger" >Salir</button>
+    <button  type="submit" class="btn btn-success" form="formDoc">Aceptar</button>
+  </div>
+</ng-template>

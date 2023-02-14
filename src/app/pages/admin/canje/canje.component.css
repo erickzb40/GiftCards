@@ -30,3 +30,15 @@
   border-radius: 30px;
 }
 
+.my-validation-message::before {
+  display: none;
+}
+
+.my-validation-message i {
+  margin: 0 .4em;
+  color: #f27474;
+  font-size: 1.4em;
+}
+.documento::placeholder{
+  text-align: left;
+}

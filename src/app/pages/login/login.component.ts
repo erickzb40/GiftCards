@@ -28,23 +28,6 @@ export class LoginComponent implements OnInit {
       this.recordarme=true;
     }
   }
-/*   login(form: NgForm) {
-    Swal.fire({title: 'Cargando...',focusCancel:false,allowOutsideClick: false});
-    Swal.showLoading();
-    if (form.invalid) { return  }
-    this.auth.login(form.form.value).pipe(finalize(() => {})).subscribe((res:any) => {
-      if (Object.entries(res).length > 0)
-      {
-        if (this.recordarme) {
-          localStorage.setItem('user', this.usuario.usuario_nombre);
-          localStorage.setItem('recordarme','true');
-        }
-        Swal.close();
-        localStorage.setItem('pref', this.usuario.usuario_nombre);
-        this.router.navigateByUrl('cards');
-      } else {Swal.fire({title: 'Mensaje',icon: 'warning',text: 'No se encontro ningun usuario'})}
-    }, err => {Swal.fire({ icon: 'warning', text: 'hubo un error en la conexion al servidor' });});
-  } */
   login(form: NgForm) {
     Swal.fire({
       title: 'Cargando...',
@@ -69,7 +52,7 @@ export class LoginComponent implements OnInit {
         Swal.close();
         localStorage.setItem('token',res.token);
         localStorage.setItem('emp',this.usuario.empresa.toLowerCase());
-        this.router.navigateByUrl('cards');
+        this.router.navigateByUrl('registros');
       } else {
         Swal.fire({
           title: 'Mensaje',
@@ -79,7 +62,7 @@ export class LoginComponent implements OnInit {
       }
     },  err => {
       if (err.error.detail) { Swal.fire({ icon: 'warning', text: err.error.detail }); }
-      else { Swal.fire({ icon: 'warning', text: 'Hubo un error al crear el registro' }); }
+      else { Swal.fire({ icon: 'warning', text: 'Hubo un error en la conexión' }); }
     });
   }
 }

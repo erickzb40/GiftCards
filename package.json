@@ -15,6 +15,7 @@
     "@angular/compiler": "^14.1.0",
     "@angular/core": "^14.1.0",
     "@angular/forms": "^14.1.0",
+    "@angular/localize": "^14.1.0",
     "@angular/platform-browser": "^14.1.0",
     "@angular/platform-browser-dynamic": "^14.1.0",
     "@angular/router": "^14.1.0",
@@ -22,6 +23,7 @@
     "@fortawesome/fontawesome-free": "^6.2.0",
     "@fortawesome/fontawesome-svg-core": "^6.2.0",
     "@fortawesome/free-solid-svg-icons": "^6.2.0",
+    "@ng-bootstrap/ng-bootstrap": "^13.0.0",
     "@popperjs/core": "^2.11.6",
     "@techiediaries/ngx-qrcode": "^9.1.0",
     "admin-lte": "3.2",
@@ -42,8 +44,9 @@
     "node-mailer": "^0.1.1",
     "reverse-md5": "^0.0.5",
     "rxjs": "~7.5.0",
-    "sweetalert2": "^11.4.29",
+    "sweetalert2": "^11.4.8",
     "tslib": "^2.3.0",
+    "xlsx": "^0.18.5",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {

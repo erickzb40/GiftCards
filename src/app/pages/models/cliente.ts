@@ -10,5 +10,5 @@ export interface clienteModel{
    documento :  string,
    montoTexto : string,
    descripcion :  string,
-   fecha_vencimiento:Date
+   fecha_vencimiento:string
 }

@@ -1,8 +1,39 @@
 .filtro{
   filter: grayscale(100%);
 }
-.vendido{
-background-image: url('../../../../../assets/dist/img/vendido.png');
-background-size: 350px 180px;
-background-repeat: no-repeat;
+
+.contenedor{
+  margin: 15px;
+  margin-left: 50px;
+  position: relative;
+  display: inline-block;
+  text-align: center;
+}
+.monto{
+  position: absolute;
+  top: 130px;
+  left: 80px;
+  font-size: 50px;
+}
+.codigo{
+  position: absolute;
+  top: 295px;
+  left: 200px;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 25px;
+}
+.qr{
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 330px;
+  left: 500px;
+}
+.vence{
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 330px;
+  left: 105px;
+  color: white;
+  font-size: 25px;
 }

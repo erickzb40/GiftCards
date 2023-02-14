@@ -1,0 +1,62 @@
+<div class="row">
+  <div class="col-2">
+    <label>Desde:</label>
+    <input type="date" [(ngModel)]="desde" class="form-control">
+  </div>
+  <div class="col-2">
+    <label>Hasta:</label>
+    <input type="date" [(ngModel)]="hasta" class="form-control">
+  </div>
+  <div class="col-1">
+    <label for="">&nbsp;&nbsp;</label><br>
+  <a (click)="getDetalles()" style="cursor: pointer;">
+    <i  class="fa-solid fa-magnifying-glass"  style="color: rgb(44, 116, 211);font-size: 25px;margin-top: 2px;"></i>
+  </a>
+  </div>
+  <div class="col-1">
+    <label for="">&nbsp;&nbsp;</label><br>
+    <button class="btn btn-success mb-2">Exportar <i class="fa fa-file-excel"></i></button>
+  </div>
+
+</div>
+<table class="table table-sm text-center">
+<thead>
+  <tr>
+    <!-- <th scope="col">ID</th> -->
+    <th scope="col">Serie</th>
+    <th scope="col">Monto</th>
+    <th scope="col">Documento_ref</th>
+    <th scope="col">Estado</th>
+    <th scope="col">Fecha Creado</th>
+    <th scope="col">Fecha Vencimiento</th>
+    <th scope="col">Local</th>
+    <th scope="col">Fecha Canje</th>
+    <th scope="col">Usuario</th>
+    <!-- <th scope="col">Mostrar</th> -->
+    <th scope="col">Descripción</th>
+  </tr>
+</thead>
+<tbody>
+  <tr *ngFor="let item of detalles | paginate: { itemsPerPage: 10, currentPage: p, id: 'first' }">
+    <!-- <th scope="row">{{item.id}}</th> -->
+    <td>{{item.serie}}</td>
+    <td>{{item.monto}}</td>
+    <td>{{item.documento_ref}}</td>
+    <td>
+      <span class="badge text-bg-primary" *ngIf="item.estado=='1'">ACTIVO</span>
+      <span class="badge text-bg-info" *ngIf="item.estado=='2'">CANJEADO</span>
+      <span class="badge text-bg-secondary" *ngIf="item.estado=='3'">VENCIDO</span>
+      <span class="badge text-bg-danger" *ngIf="item.estado=='4'">ANULADO</span>
+      <span class="badge text-bg-secondary" *ngIf="item.estado=='5'">NO ACTIVO</span>
+      </td>
+     <td>{{item.fecha_creado}}</td>
+    <td>{{item.fecha_vencimiento|date:'dd-MM-yyyy'}}</td>
+    <td>{{item.local}}</td>
+    <td>{{item.fecha_canje|date: 'dd-MM-yyyy HH:mm a'  }}</td>
+    <td>{{item.usuario}}</td>
+    <!-- <td>{{item.montoTexto}}</td> -->
+    <td>{{item.descripcion}}</td>
+  </tr>
+</tbody>
+</table>
+<pagination-controls (pageChange)="p = $event" id="first"></pagination-controls>

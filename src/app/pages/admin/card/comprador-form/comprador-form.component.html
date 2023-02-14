@@ -23,7 +23,7 @@
   <div class="row m-2">
     <label class="col-3 form-label">Numero Documento: </label>
     <div class="col-9">
-      <input type="number" [(ngModel)]="comprador.num_doc" name="num_doc" class="form-control" required>
+      <input type="number" [(ngModel)]="comprador.num_doc" name="num_doc" class="form-control" maxlength="11" required>
       <span style="color: red;" *ngIf="updateForm.submitted&&updateForm.controls['num_doc'].errors">Este Campo es
         obligatorio (*)</span>
     </div>
@@ -49,14 +49,6 @@
     <div class="col-9">
       <input type="email" [(ngModel)]="comprador.correo" name="correo" class="form-control" required>
       <span style="color: red;" *ngIf="updateForm.submitted&&updateForm.controls['correo'].errors">Este Campo es
-        obligatorio (*)</span>
-    </div>
-  </div>
-  <div class="row m-2">
-    <label class="col-3 form-label">Documento: </label>
-    <div class="col-9">
-      <input type="text" [(ngModel)]="comprador.documento" name="documento" class="form-control" required>
-      <span style="color: red;" *ngIf="updateForm.submitted&&updateForm.controls['documento'].errors">Este Campo es
         obligatorio (*)</span>
     </div>
   </div>
